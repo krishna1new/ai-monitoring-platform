@@ -1,0 +1,18 @@
+version: "3.9"
+
+services:
+  ai-monitoring-platform:
+    build: .
+    container_name: ai-monitoring-container
+
+    ports:
+      - "8000:8000"
+
+    restart: unless-stopped
+
+    volumes:
+      - ./data:/app/data
+      - ./logs:/app/logs
+
+    environment:
+      - PYTHONUNBUFFERED=1
