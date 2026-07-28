@@ -7,15 +7,12 @@ app = FastAPI(
     title="AI Infrastructure Monitoring Platform",
     version="1.0.0"
 )
-
-# Create the database when the application starts
-create_database()
-
-
+# Create the database when the applic@app.get("/")
 @app.get("/")
-def home():
+def root():
     return {
-        "message": "Welcome to AI Infrastructure Monitoring Platform"
+        "message": "CI/CD Pipeline Test Successful!",
+        "version": "v2"
     }
 
 
