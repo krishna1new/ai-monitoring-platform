@@ -1,9 +1,14 @@
+import os
 import sqlite3
 
-DATABASE = "data/metrics.db"
+DATABASE_DIR = "data"
+DATABASE = os.path.join(DATABASE_DIR, "metrics.db")
 
 
 def create_database():
+    # Create the data directory if it doesn't exist
+    os.makedirs(DATABASE_DIR, exist_ok=True)
+
     conn = sqlite3.connect(DATABASE)
     cursor = conn.cursor()
 
@@ -46,5 +51,4 @@ def get_history():
     rows = cursor.fetchall()
 
     conn.close()
-
     return rows
